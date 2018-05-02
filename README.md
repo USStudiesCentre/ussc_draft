@@ -6,7 +6,6 @@ A repository for drafting USSC ggplot2 themes.
 ### Opinionated themes...
 The user can set grids within the theme function itself by writing grid=TRUE/FALSE or grid="XYxy" -- or any combination thereof. Themes default to showing major grid lines only. 
 Applying parameters within the theme also applies to the axis lines, ticks, and plot border. 
-My home is that the USSC theme becomes even more cohesive. 
 ### Default colours for monochromatic plots
 Line charts default to the USSC red colour.
 Bar charts = light blue.
