@@ -1,2 +1,2 @@
 # ussc_draft
-A repository for ggplot2 theme drafts.
+A repository for drafting USSC ggplot2 themes.
