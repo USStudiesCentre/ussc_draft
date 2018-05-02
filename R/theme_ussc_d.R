@@ -40,12 +40,11 @@ ussc_fonts <- function(){
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4, alpha=0.4) +  theme_ussc() + labs(title="Neo Sans Pro Header", x="Univers Font: Sepal Width", y="Univers Font: Sepal Length") + scale_colour_ussc("blue")
 #' @author 
 #' Zoe Meers
-theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE){
+theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
     grid_col <- axis_col <- "white"
     basic_theme <- theme_bw(base_family="univers",
              base_size = 11.5) + 
         theme(plot.margin = unit(c(2,2,2,2),"cm"),
-              panel.border = element_blank(),
               axis.ticks = element_line(colour = "#cccccc"),
               text = element_text(colour="#444444"),
               axis.title.x = element_text(size=9, "univers"),
@@ -61,6 +60,7 @@ theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE){
               plot.background = element_blank(),
               strip.background = element_blank(),
               legend.background = element_blank()
+              
         )
     
     if (inherits(grid, "character") | grid == TRUE) {
@@ -101,6 +101,11 @@ theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE){
     } else {
         basic_theme <- basic_theme + theme(axis.line=element_blank())
     }
+    if (!border) {
+        basic_theme <- basic_theme + theme(panel.border =  element_blank())
+    } else {
+        basic_theme <- basic_theme + theme(panel.border = element_rect(size=0.15, color="#cccccc"))
+    }
     if (!ticks) {
         basic_theme <- basic_theme + theme(axis.ticks = element_blank())
         basic_theme <- basic_theme + theme(axis.ticks.x = element_blank())
@@ -113,3 +118,4 @@ theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE){
     }
     basic_theme
 }
+
