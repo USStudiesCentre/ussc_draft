@@ -52,7 +52,6 @@ ussc_fonts <- function(){
 #' @author 
 #' Zoe Meers
 theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
-    grid_col <- axis_col <- "white"
     basic_theme <- theme_bw(base_family="univers",
              base_size = 11.5) + 
         theme(plot.margin = unit(c(2,2,2,2),"cm"),
@@ -151,7 +150,6 @@ theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
 #' @author 
 #' Zoe Meers
 theme_ussc_univers_light_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
-    grid_col <- axis_col <- "white"
     basic_theme <- theme_bw(base_family="universLight") + 
         theme(plot.margin = unit(c(2,2,2,2),"pt"),
               text = element_text(colour="#444444"),
@@ -161,7 +159,7 @@ theme_ussc_univers_light_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE,
               axis.title.y = element_text(size=9),
               axis.text.x = element_text(size = 9),
               axis.text.y = element_text(size = 7),
-              legend.text = element_text(size=9),
+              legend.text = element_text(size=7),
               legend.title = element_text(size=9),
               legend.key.size = unit(x = 9,units = "pt"),
               plot.subtitle=element_text(size=10),
