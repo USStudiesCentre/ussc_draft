@@ -3,7 +3,7 @@
 ## The United States Studies Centre at the University of Sydney
 
 
-d3_idealpoints <- function(data, width=NULL, height=NULL){
+d3_rollcall_idealpoints <- function(data, width=NULL, height=NULL){
     r2d3::r2d3(
         data=data,
         d3_version = "3", 
