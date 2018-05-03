@@ -54,7 +54,7 @@ ussc_fonts <- function(){
 theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
     basic_theme <- theme_bw(base_family="univers",
              base_size = 11.5) + 
-        theme(plot.margin = unit(c(2,2,2,2),"cm"),
+        theme(plot.margin = unit(c(0.5,0.5,0.5,0.5),"cm"),
               axis.ticks = element_line(colour = "#cccccc"),
               text = element_text(colour="#444444"),
               axis.title.x = element_text(size=9, "univers"),
@@ -146,12 +146,12 @@ theme_ussc_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
 #' border border if `TRUE` add plot border
 #' @examples 
 #' Create ggplot theme using light Univers USSC theme
-#' ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4, alpha=0.4) +  theme_ussc_univers_light(axis=TRUE, border=FALSE, grid='xy') + labs(title="Light Univers Header", x="Sepal Width", y="Sepal Length") + scale_colour_ussc()
+#' ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4, alpha=0.4) +  theme_ussc_univers_light_d(axis=TRUE, border=FALSE, grid='xy') + labs(title="Light Univers Header", x="Sepal Width", y="Sepal Length") + scale_colour_ussc()
 #' @author 
 #' Zoe Meers
 theme_ussc_univers_light_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
     basic_theme <- theme_bw(base_family="universLight") + 
-        theme(plot.margin = unit(c(2,2,2,2),"pt"),
+        theme(plot.margin = unit(c(0.5,0.5,0.5,0.5),"cm"),
               text = element_text(colour="#444444"),
               panel.border = element_rect(colour = "#cccccc"),
               axis.ticks = element_line(colour = "#444444"),
@@ -250,7 +250,7 @@ theme_ussc_univers_light_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE,
 
 theme_ussc_neosanspro_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
     basic_theme <- theme_bw(base_family="neosanspro") + 
-        theme(plot.margin = unit(c(2,2,2,2),"pt"),
+        theme(plot.margin = unit(c(0.5,0.5,0.5,0.5),"cm"),
               text = element_text(colour="#444444"),
               panel.border = element_rect(colour = "#cccccc"),
               axis.ticks = element_line(colour = "#444444"),
@@ -344,13 +344,13 @@ theme_ussc_neosanspro_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, bo
 #' border border if `TRUE` add plot border
 #' @examples 
 #' Create ggplot theme using Neo Sans Pro USSC theme
-#' ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4, alpha=0.4) +  theme_ussc_neosanspro_light_d(grid="XYxy", border=FALSE) + labs(title="Neo Sans Pro Header", x="Sepal Width", y="Sepal Length") + scale_colour_ussc()
+#' ggplot(iris, aes(Sepal.Width, Sepal.Length, colour = Species)) + geom_point(size = 4, alpha=0.4) +  theme_ussc_neosanspro_light_d(grid="XY", border=FALSE) + labs(title="Neo Sans Pro Header", x="Sepal Width", y="Sepal Length") + scale_colour_ussc()
 #' @author 
 #' Zoe Meers
 
 theme_ussc_neosanspro_light_d <- function(grid = TRUE, axis = FALSE, ticks = FALSE, border=TRUE){
     basic_theme <- theme_bw(base_family="neosansproLight") + 
-        theme(plot.margin = unit(c(2,2,2,2),"pt"),
+        theme(plot.margin = unit(c(0.5,0.5,0.5,0.5),"cm"),
               text = element_text(colour="#444444"),
               panel.border = element_rect(colour = "#cccccc"),
               axis.ticks = element_line(colour = "#444444"),
@@ -361,9 +361,9 @@ theme_ussc_neosanspro_light_d <- function(grid = TRUE, axis = FALSE, ticks = FAL
               legend.text = element_text(size=7),
               legend.title = element_text(size=9),
               legend.key.size = unit(x = 9,units = "pt"),
-              plot.subtitle=element_text(size=10, family="neosansproLight"),
+              plot.subtitle=element_text(size=10),
               plot.title= element_text(size=14),
-              plot.caption =element_text(size=7, family="neosansproLight"),
+              plot.caption =element_text(size=7),
               plot.background = element_blank(),
               strip.background = element_blank(),
               legend.background = element_blank()
