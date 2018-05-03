@@ -1,6 +1,6 @@
-Package: ussc
+Package: ussc_draft
 Type: Package
-Title: Functions and Scripts Used at the United States Studies Centre 
+Title: Draft ussc package
 Version: 0.2.2
 Description: A collection of helper scripts and functions used in our research at USSC.
 License: MIT License
