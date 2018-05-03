@@ -14,7 +14,7 @@ var svg = d3.select("body")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // poke data at it
-r2d3.onRender(function(root, svg, width, height, options, error, annotate){
+r2d3.onRender(function(root, svg, width, height, options, error){
        if(error) {
            console.log(error);
        } 
@@ -204,27 +204,26 @@ r2d3.onRender(function(root, svg, width, height, options, error, annotate){
            horizontal.attr("y2", yCoord2);
        }
 
-if(annotate=TRUE){
        //titling
        svg.append("text")
            .attr("class", "title")
            .attr("x", 12)
            .attr("y", 31)
-           .style("fill","#333")
+           .style("fill", options.annotate)
            .attr("font-size", 14)
            .text("Ideal points, 115th U.S. House of Representatives");
        svg.append("text")
            .attr("class", "title")
            .attr("x", 12)
            .attr("y", 51)
-           .style("fill","#333")
+           .style("fill",options.annotate)
            .attr("font-size", 14)
            .text("Computed by Simon Jackman."); 
       svg.append("text")
            .attr("class", "title")
            .attr("x", 12)
            .attr("y", 61)
-           .style("fill","#333")
+           .style("fill",options.annotate)
            .attr("font-size", 14)
            .text("Legislators sorted by estimated ideal point."); 
       svg.append("text")
@@ -232,7 +231,7 @@ if(annotate=TRUE){
            .attr("x",12)
            .attr("y",71)
            .attr("font-size", 12)
-           .style("fill","#444")
+           .style("fill", options.annotate)
           //     .attr("text-anchor","start")
            .text("Horizontal bars cover 95% credible intervals.");
     
@@ -245,14 +244,14 @@ if(annotate=TRUE){
            .attr("x",12)
            .attr("y",81)
            .attr("font-size", 10)
-           .style("fill","#aaa")
+           .style("fill",options.annotate)
            .on('mouseover', function(d){
                d3.select(this).style("text-decoration","underline");
                d3.select(this).style("fill","blue");
            })
            .on('mouseout', function(d){
                d3.select(this).style("text-decoration","none");
-               d3.select(this).style("fill","#aaa");
+               d3.select(this).style("fill", options.annotate);
            })
            .attr("text-anchor","start")
            .text("Methodological details: Clinton, Jackman & Rivers, APSR 2004.");
