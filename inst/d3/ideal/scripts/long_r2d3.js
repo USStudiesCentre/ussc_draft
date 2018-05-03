@@ -206,20 +206,20 @@ r2d3.onRender(function(root, svg, width, height, options, error){
 
 
        // titling
-       svg.append("text")
-           .attr("class", "title")
-           .attr("x", 12)
-           .attr("y", 31)
-           .style("fill","#333")
-           .attr("font-size", 14)
-           .text("Ideal points, 115th U.S. House of Representatives");
-       svg.append("text")
-           .attr("class", "title")
-           .attr("x", 12)
-           .attr("y", 51)
-           .style("fill","#333")
-           .attr("font-size", 14)
-           .text("Computed by Simon Jackman."); 
+       // svg.append("text")
+       //     .attr("class", "title")
+       //     .attr("x", 12)
+       //     .attr("y", 31)
+       //     .style("fill","#333")
+       //     .attr("font-size", 14)
+       //     .text("Ideal points, 115th U.S. House of Representatives");
+       // svg.append("text")
+       //     .attr("class", "title")
+       //     .attr("x", 12)
+       //     .attr("y", 51)
+       //     .style("fill","#333")
+       //     .attr("font-size", 14)
+       //     .text("Computed by Simon Jackman."); 
       svg.append("text")
            .attr("class", "title")
            .attr("x", 12)
