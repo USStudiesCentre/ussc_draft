@@ -424,3 +424,17 @@ theme_ussc_neosanspro_light_d <- function(grid = TRUE, axis = FALSE, ticks = FAL
     }
     basic_theme
 }
+
+#' Load monochrome colours
+#' @description
+#' Sets colours for monochromatic plots
+#' @usage 
+#' ussc_monochrome()
+#' @author 
+#' Zoe Meers
+ussc_monochrome <- function(){
+    update_geom_defaults("bar", list(fill = "#009de3"))
+    update_geom_defaults("point", list(colour = "#1c396e"))
+    update_geom_defaults("line", list(colour = "#ed1b35"))
+}
+    
