@@ -7,8 +7,8 @@ d3_idealpoints <- function(data, width=NULL, height=NULL){
     r2d3::r2d3(
         data=data,
         d3_version = "3", 
-        script=system.file("d3/ideal/scripts/long_r2d3.js",
-        css = "css/style.css", 
-        dependencies = "dependencies/timeStamp.js")
+        script=system.file("d3/ideal/scripts/long_r2d3.js"),
+        css = system.file("d3/ideal/css/style.css"), 
+        dependencies = system.file("d3/ideal/dependencies/timeStamp.js")
     )
 }
