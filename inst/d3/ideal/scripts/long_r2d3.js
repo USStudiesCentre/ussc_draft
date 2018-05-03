@@ -14,7 +14,7 @@ var svg = d3.select("body")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // poke data at it
-r2d3.onRender(function(root, svg, width, height, options, error){
+r2d3.onRender(function(root, svg, width, height, options, error, annotate){
        if(error) {
            console.log(error);
        } 
@@ -204,22 +204,22 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            horizontal.attr("y2", yCoord2);
        }
 
-
-       // titling
-       // svg.append("text")
-       //     .attr("class", "title")
-       //     .attr("x", 12)
-       //     .attr("y", 31)
-       //     .style("fill","#333")
-       //     .attr("font-size", 14)
-       //     .text("Ideal points, 115th U.S. House of Representatives");
-       // svg.append("text")
-       //     .attr("class", "title")
-       //     .attr("x", 12)
-       //     .attr("y", 51)
-       //     .style("fill","#333")
-       //     .attr("font-size", 14)
-       //     .text("Computed by Simon Jackman."); 
+if(annotate=TRUE){
+       //titling
+       svg.append("text")
+           .attr("class", "title")
+           .attr("x", 12)
+           .attr("y", 31)
+           .style("fill","#333")
+           .attr("font-size", 14)
+           .text("Ideal points, 115th U.S. House of Representatives");
+       svg.append("text")
+           .attr("class", "title")
+           .attr("x", 12)
+           .attr("y", 51)
+           .style("fill","#333")
+           .attr("font-size", 14)
+           .text("Computed by Simon Jackman."); 
       svg.append("text")
            .attr("class", "title")
            .attr("x", 12)
@@ -235,7 +235,7 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .style("fill","#444")
           //     .attr("text-anchor","start")
            .text("Horizontal bars cover 95% credible intervals.");
-
+    
        svg.append("g")
            .append("svg:a")
            .attr({
@@ -258,4 +258,6 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .text("Methodological details: Clinton, Jackman & Rivers, APSR 2004.");
     
        }
+     }
+
       )
