@@ -107,8 +107,10 @@ r2d3.onRender(function(root, svg, width, height, options, error){
 
            // draws line from CI to info
        var horizontal = svg.append("g")
-            .append("svg:line")
-            .attr("class", "horizontal");
+            .append("svg:line");
+
+      horizontal.append("line")
+        .attr("class", "horizontal");
 
        var highLighted = svg.append("g")
            .append("svg:rect")
