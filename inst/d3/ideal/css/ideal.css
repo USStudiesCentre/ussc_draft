@@ -24,12 +24,12 @@
   display: none;
 }
 
-.r2d3 .line {
+.r2d3 .line line {
   fill: none;
   opacity: 0.75;
   shape-rendering: auto;
-  stroke: lightslategrey;
-  stroke-width: 7px;
+  stroke-width: 4px;
+  stroke: #999999;
 }
 
 .r2d3 .line path {
@@ -98,23 +98,22 @@
   left: 0;
 }
 .r2d3 a:link {
-    color: #aaa;
-    text-anchor:"start";
+  color: #aaa;
+  text-anchor: "start";
 }
 
 /* visited link */
 .r2d3 a:visited {
-    color: "blue";
-    text-decoration: underline;
+  color: #aaa;
 }
 
 /* mouse over link */
 .r2d3 a:hover {
-    color: #aaa;
+  color: "blue";
+  text-decoration: underline;
 }
 
 /* selected link */
 .r2d3 a:active {
-    color: #aaa;
+  color: #aaa;
 } 
-
