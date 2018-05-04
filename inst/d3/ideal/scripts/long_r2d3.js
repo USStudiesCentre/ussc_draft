@@ -69,7 +69,40 @@ r2d3.onRender(function(root, svg, width, height, options, error){
        
        var confidenceInterval = svg.append("g")
            .attr("class","ciline");
-           
+       // confidence intervals
+       svg.selectAll("confidenceIntervals")
+           .data(dataset)
+           .enter()
+           .append("svg:line")
+           .attr("class","ciline")
+           .attr("x1",function(d){
+           return xScale(d.lo);
+           })
+           .attr("x2",function(d){
+           return xScale(d.up);
+           })
+           .attr("y1",function(d){
+           return yScale(d.indx);
+           })
+           .attr("y2",function(d){
+           return yScale(d.indx);
+           })
+           // .style("opacity",0.11)
+           // .style("stroke","lightslategrey")
+           // .style("stroke-width","4px")
+           // .on("mouseover",
+           //     function(){
+           //         d3.select(this).style("opacity",.55);
+           //     }
+           //    )
+           // .on("mouseout",
+           //     function(){
+           //         d3.select(this).style("opacity",.11);
+           //     highLighted.style("opacity",0.00);
+           //     }
+           //    )
+            .on("mousemove",mymousemove); 
+
        // plot data
        svg.selectAll("rect")
            .data(dataset)
@@ -118,39 +151,7 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr("class","rank")
            .attr("transform", "translate(0, 34)");
 
-       // confidence intervals
-       svg.selectAll("confidenceIntervals")
-           .data(dataset)
-           .enter()
-           .append("svg:line")
-           .attr("class","ciline")
-           .attr("x1",function(d){
-           return xScale(d.lo);
-           })
-           .attr("x2",function(d){
-           return xScale(d.up);
-           })
-           .attr("y1",function(d){
-           return yScale(d.indx);
-           })
-           .attr("y2",function(d){
-           return yScale(d.indx);
-           })
-           // .style("opacity",0.11)
-           // .style("stroke","lightslategrey")
-           // .style("stroke-width","4px")
-           // .on("mouseover",
-           //     function(){
-           //         d3.select(this).style("opacity",.55);
-           //     }
-           //    )
-           // .on("mouseout",
-           //     function(){
-           //         d3.select(this).style("opacity",.11);
-           //     highLighted.style("opacity",0.00);
-           //     }
-           //    )
-            .on("mousemove",mymousemove); 
+       
        
        function mymousemove() {
            y0 = yScale.invert(d3.mouse(this)[1]);
