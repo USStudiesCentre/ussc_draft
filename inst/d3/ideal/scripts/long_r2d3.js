@@ -56,7 +56,7 @@ r2d3.onRender(function(root, svg, width, height, options, error){
        function make_x_grid(){
            return d3.svg.axis()
            .scale(xScale)
-           .orient("top")
+           .orient("bottom")
        }
 
        svg.append("g")         
@@ -67,25 +67,6 @@ r2d3.onRender(function(root, svg, width, height, options, error){
                  .tickFormat("")
                  );
        
-       var confidenceInterval = svg.append("line");
-       // confidence intervals
-       svg.selectAll("confidenceIntervals")
-           .data(dataset)
-           .enter()
-           .attr("x1",function(d){
-           return xScale(d.lo);
-           })
-           .attr("x2",function(d){
-           return xScale(d.up);
-           })
-           .attr("y1",function(d){
-           return yScale(d.indx);
-           })
-           .attr("y2",function(d){
-           return yScale(d.indx);
-           })
-           .on("mousemove",mymousemove); 
-
        // plot data
        svg.selectAll("rect")
            .data(dataset)
@@ -100,14 +81,15 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            })
                .attr("width",4)
            .attr("height",4)
-           .style("fill",function(d) { 
+           .style("opacity",.50)
+               .style("fill",function(d) { 
            return color(colorValue(d)); 
            });
 
-           // draws line from CI to info
        var horizontal = svg.append("g")
             .append("svg:line")
-            .attr("class", "horizontal");
+            .style("stroke-width", "1px")
+            .style("stroke","#999");
 
        var highLighted = svg.append("g")
            .append("svg:rect")
@@ -115,15 +97,21 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr("width",11)
            .attr("height",11)
            .attr("x",1)
-           .attr("y",1);
+           .attr("y",1)
+           .style("fill","black")
+           .style("opacity",0.00);
        
+       var confidenceInterval = svg.append("g")
+           .attr("class","line")
+           .style("opacity",0.00)
+           .attr("stroke-width", "4px");
 
        var info = svg.append("g")
            .attr("transform", "translate(" + (width - -40) + ",0)")
                .style("fill", "#777")
            .style("letter-spacing","-1px")
-           .attr("font-size", (width*0.003) + "em");
-           //.style("font-size", "14px");
+           .attr("font-size", (width*0.003) + "em")
+           .style("font-size", "14px");
 
        info.append("text")
            .attr("class","label");        
@@ -136,7 +124,39 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr("class","rank")
            .attr("transform", "translate(0, 34)");
 
-       
+       // confidence intervals
+       svg.selectAll("confidenceIntervals")
+           .data(dataset)
+           .enter()
+           .append("svg:line")
+           .attr("class","line")
+           .attr("x1",function(d){
+           return xScale(d.lo);
+           })
+           .attr("x2",function(d){
+           return xScale(d.up);
+           })
+           .attr("y1",function(d){
+           return yScale(d.indx);
+           })
+           .attr("y2",function(d){
+           return yScale(d.indx);
+           })
+            .style("opacity",0.11)
+            .style("stroke","lightslategrey")
+            .style("stroke-width","4px")
+           .on("mouseover",
+               function(){
+                   d3.select(this).style("opacity",.55);
+               }
+              )
+           .on("mouseout",
+               function(){
+                   d3.select(this).style("opacity",.11);
+               highLighted.style("opacity",0.00);
+               }
+              )
+           .on("mousemove",mymousemove); 
        
        function mymousemove() {
            y0 = yScale.invert(d3.mouse(this)[1]);
@@ -157,11 +177,17 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            hcol = color(colorValue(d));
            highLighted.style("fill",hcol);
 
-           if(yCoord>(height-100)){
+           if(yCoord>(height-100)){ //LOWER BOUNDS OF VIZ
            yCoord2 = height-100;
            } else {
            yCoord2 = yCoord;
            }
+           if(yCoord<(height-100)){ //UPPER BOUNDS OF VIZ
+           yCoord2 = height+100;
+           } else {
+           yCoord2 = yCoord;
+           }
+
            xCoord1 = xScale(d.up) + 6;
            if(d.idealPoint<0.6){
            xCoord2 = xCoord1 + 40;
@@ -185,13 +211,13 @@ r2d3.onRender(function(root, svg, width, height, options, error){
 
 
        // titling
-       // svg.append("text")
-       //     .attr("class", "title")
-       //     .attr("x", 12)
-       //     .attr("y", 31)
-       //     .style("fill","#333")
-       //     .attr("font-size", 14)
-       //     .text("Ideal points, 115th U.S. House of Representatives");
+       svg.append("text")
+           .attr("class", "title")
+           .attr("x", 12)
+           .attr("y", 31)
+           .style("fill","#333")
+           .attr("font-size", 14)
+           .text("Ideal points, 115th U.S. House of Representatives");
        // svg.append("text")
        //     .attr("class", "title")
        //     .attr("x", 12)
@@ -203,38 +229,37 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr("class", "title")
            .attr("x", 12)
            .attr("y", 61)
-           // .style("fill","#333")
-           // .attr("font-size", 14)
+            .style("fill","#333")
+            .attr("font-size", 14)
            .text("Legislators sorted by estimated ideal point."); 
       svg.append("text")
           .attr("class", "title")
            .attr("x",12)
            .attr("y",71)
-           // .attr("font-size", 12)
-           // .style("fill","#444")
-          //     .attr("text-anchor","start")
+            .attr("font-size", 12)
+            .style("fill","#444")
+               .attr("text-anchor","start")
            .text("Horizontal bars cover 95% credible intervals.");
 
        svg.append("g")
            .append("svg:a")
-           .append("text")
-           .attr("class", "title")
            .attr({
            "xlink:href": "https://dx.doi.org/10.1017/S0003055404001194",
            "target": "_blank"})
+           .append("svg:text")
            .attr("x",12)
            .attr("y",81)
-           // .attr("font-size", 10)
-           // .style("fill","#aaa")
-           // .on('mouseover', function(d){
-           //     d3.select(this).style("text-decoration","underline");
-           //     d3.select(this).style("fill","blue");
-           // })
-           // .on('mouseout', function(d){
-           //     d3.select(this).style("text-decoration","none");
-           //     d3.select(this).style("fill","#aaa");
-           // })
-           // .attr("text-anchor","start")
+           .attr("font-size", 10)
+           .style("fill","#aaa")
+           .on('mouseover', function(d){
+                d3.select(this).style("text-decoration","underline");
+                d3.select(this).style("fill","blue");
+            })
+            .on('mouseout', function(d){
+                d3.select(this).style("text-decoration","none");
+                d3.select(this).style("fill","#aaa");
+            })
+            .attr("text-anchor","start")
            .text("Methodological details: Clinton, Jackman & Rivers, APSR 2004.");
     
        }
