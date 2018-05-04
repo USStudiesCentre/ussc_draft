@@ -182,7 +182,7 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            } else {
            yCoord2 = yCoord;
            }
-           if(yCoord<(height-100)){ //UPPER BOUNDS OF VIZ
+           if(yCoord>(height+100)){ //UPPER BOUNDS OF VIZ
            yCoord2 = height+100;
            } else {
            yCoord2 = yCoord;
