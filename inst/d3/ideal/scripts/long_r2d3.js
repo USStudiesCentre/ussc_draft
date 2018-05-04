@@ -67,6 +67,9 @@ r2d3.onRender(function(root, svg, width, height, options, error){
                  .tickFormat("")
                  );
        
+       var confidenceInterval = svg.append("g")
+           .attr("class","ciline");
+           
        // plot data
        svg.selectAll("rect")
            .data(dataset)
@@ -85,8 +88,8 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            return color(colorValue(d)); 
            });
 
-       var horizontal = svg.append("g")
-            .append("svg:line");
+       // var horizontal = svg.append("g")
+       //      .append("svg:line");
 
        var highLighted = svg.append("g")
            .append("svg:rect")
@@ -96,8 +99,6 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr("x",1)
            .attr("y",1);
        
-       var confidenceInterval = svg.append("g")
-           .attr("class","ciline");
 
        var info = svg.append("g")
            .attr("transform", "translate(" + (width - -40) + ",0)")
