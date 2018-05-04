@@ -1,4 +1,3 @@
-
 var margin = {top: 60, right: 10, bottom: 60, left: 10},
     width = width - margin.left - margin.right,
     height = height - margin.top - margin.bottom;
@@ -103,9 +102,9 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .style("opacity",0.00);
        
        var confidenceInterval = svg.append("g")
-           .attr("class","line")
-               .style("opacity",0.00)
-           .attr("stroke-width", "4px");
+           .attr("class","line");
+           //     .style("opacity",0.00)
+           // .attr("stroke-width", "4px");
 
        var info = svg.append("g")
            .attr("transform", "translate(" + (width - -40) + ",0)")
@@ -143,9 +142,9 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr("y2",function(d){
            return yScale(d.indx);
            })
-           .style("opacity",0.11)
-           .style("stroke","lightslategrey")
-           .style("stroke-width","4px")
+           // .style("opacity",0.11)
+           // .style("stroke","lightslategrey")
+           // .style("stroke-width","4px")
            .on("mouseover",
                function(){
                    d3.select(this).style("opacity",.55);
@@ -204,37 +203,38 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            horizontal.attr("y2", yCoord2);
        }
 
-       //titling
-       svg.append("text")
-           .attr("class", "title")
-           .attr("x", 12)
-           .attr("y", 31)
-           .style("fill", options.annotate)
-           .attr("font-size", 14)
-           .text("Ideal points, 115th U.S. House of Representatives");
-       svg.append("text")
-           .attr("class", "title")
-           .attr("x", 12)
-           .attr("y", 51)
-           .style("fill",options.annotate)
-           .attr("font-size", 14)
-           .text("Computed by Simon Jackman."); 
+
+       // titling
+       // svg.append("text")
+       //     .attr("class", "title")
+       //     .attr("x", 12)
+       //     .attr("y", 31)
+       //     .style("fill","#333")
+       //     .attr("font-size", 14)
+       //     .text("Ideal points, 115th U.S. House of Representatives");
+       // svg.append("text")
+       //     .attr("class", "title")
+       //     .attr("x", 12)
+       //     .attr("y", 51)
+       //     .style("fill","#333")
+       //     .attr("font-size", 14)
+       //     .text("Computed by Simon Jackman."); 
       svg.append("text")
            .attr("class", "title")
            .attr("x", 12)
            .attr("y", 61)
-           .style("fill",options.annotate)
-           .attr("font-size", 14)
+           // .style("fill","#333")
+           // .attr("font-size", 14)
            .text("Legislators sorted by estimated ideal point."); 
       svg.append("text")
           .attr("class", "title")
            .attr("x",12)
            .attr("y",71)
-           .attr("font-size", 12)
-           .style("fill", options.annotate)
+           // .attr("font-size", 12)
+           // .style("fill","#444")
           //     .attr("text-anchor","start")
            .text("Horizontal bars cover 95% credible intervals.");
-    
+
        svg.append("g")
            .append("svg:a")
            .attr({
@@ -243,20 +243,18 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .append("svg:text")
            .attr("x",12)
            .attr("y",81)
-           .attr("font-size", 10)
-           .style("fill",options.annotate)
-           .on('mouseover', function(d){
-               d3.select(this).style("text-decoration","underline");
-               d3.select(this).style("fill","blue");
-           })
-           .on('mouseout', function(d){
-               d3.select(this).style("text-decoration","none");
-               d3.select(this).style("fill", options.annotate);
-           })
-           .attr("text-anchor","start")
+           // .attr("font-size", 10)
+           // .style("fill","#aaa")
+           // .on('mouseover', function(d){
+           //     d3.select(this).style("text-decoration","underline");
+           //     d3.select(this).style("fill","blue");
+           // })
+           // .on('mouseout', function(d){
+           //     d3.select(this).style("text-decoration","none");
+           //     d3.select(this).style("fill","#aaa");
+           // })
+           // .attr("text-anchor","start")
            .text("Methodological details: Clinton, Jackman & Rivers, APSR 2004.");
     
        }
-     }
-
       )

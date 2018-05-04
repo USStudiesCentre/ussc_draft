@@ -21,12 +21,12 @@
 #' @author 
 #' Zoe Meers, Simon Jackman
 
-d3_rollcall_idealpoints <- function(data, width=NULL, height=NULL, annotate="gray"){
+d3_rollcall_idealpoints <- function(data, width=NULL, height=NULL, annotate="#444"){
     r2d3::r2d3(
         data=data,
         d3_version = "3", 
         script=system.file("d3/ideal/scripts/long_r2d3.js", package="usscdraft"),
-        css = system.file("d3/ideal/css/style.css", package="usscdraft"), 
+        css = system.file("d3/ideal/css/ideal.css", package="usscdraft"), 
         dependencies = system.file("d3/ideal/dependencies/timeStamp.js", package="usscdraft")
     )
 }
