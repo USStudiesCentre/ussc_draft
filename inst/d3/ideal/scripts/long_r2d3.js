@@ -67,12 +67,12 @@ r2d3.onRender(function(root, svg, width, height, options, error){
                  .tickFormat("")
                  );
        
-       var confidenceInterval = svg.append("line")
-           .attr("class","ciline");
+       var confidenceInterval = svg.append("line");
        // confidence intervals
        svg.selectAll("confidenceIntervals")
            .data(dataset)
            .enter()
+           .attr("class","ciline");
            .attr("x1",function(d){
            return xScale(d.lo);
            })
