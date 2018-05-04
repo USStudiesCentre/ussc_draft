@@ -35,20 +35,20 @@
     -webkit-transition: stroke-width 250ms linear;
 }
 
-.r2d3 .title {
+.r2d3 .title text {
    text-anchor: "left";
    font-size: width*0.003em;
    letter-spacing: -1px;
    text-rendering: optimizeLegibility;
 }
 
-.r2d3 .name {
+.r2d3 .name text {
   font-size: 0.003em;
   font-weight: bold;
   text-rendering: optimizeLegibility;
 }
 
-.r2d3 .credit {
+.r2d3 .credit text {
    text-anchor: left;
    text-rendering: optimizeLegibility;
 }
@@ -67,12 +67,12 @@
 }
 
 .r2d3 .ciline line {
-  opacity:0.01;
+  opacity:0.10;
   stroke:lightgrey;
   stroke-width: 4px;
 }
 .r2d3 .ciline line:hover {
-  opacity:0.55;
+  opacity:0.00;
   stroke:lightgrey;
   stroke-width: 4px;
 }

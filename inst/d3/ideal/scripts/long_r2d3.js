@@ -233,7 +233,6 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr({
            "xlink:href": "https://dx.doi.org/10.1017/S0003055404001194",
            "target": "_blank"})
-           .append("svg:text")
            .attr("x",12)
            .attr("y",81)
            // .attr("font-size", 10)
