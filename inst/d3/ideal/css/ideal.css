@@ -53,8 +53,8 @@
    text-rendering: optimizeLegibility;
 }
 .r2d3 rect{
-  stroke: #999;
-  opacity:0.5;
+  fill: black;
+  opacity:0.0;
 }
 
 .r2d3 .grid .tick {
@@ -64,6 +64,17 @@
     stroke: lightgrey;
     stroke-width: 1px;
     opacity: 0.15;
+}
+
+.r2d3 .ciline line {
+  opacity:0.00;
+  stroke:lightslategrey;
+  stroke-width: 4px;
+}
+.r2d3 .ciline line:hover {
+  opacity:0.55;
+  stroke:lightslategrey;
+  stroke-width: 4px;
 }
 
 .r2d3 .d3-tip {

@@ -87,8 +87,6 @@ r2d3.onRender(function(root, svg, width, height, options, error){
 
        var horizontal = svg.append("g")
             .append("svg:line");
-          // .style("stroke-width", "1px")
-          //  .style("stroke","#999");
 
        var highLighted = svg.append("g")
            .append("svg:rect")
@@ -96,14 +94,10 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr("width",11)
            .attr("height",11)
            .attr("x",1)
-           .attr("y",1)
-           .style("fill","black")
-           .style("opacity",0.00);
+           .attr("y",1);
        
        var confidenceInterval = svg.append("g")
-           .attr("class","line");
-           //     .style("opacity",0.00)
-           // .attr("stroke-width", "4px");
+           .attr("class","ciline");
 
        var info = svg.append("g")
            .attr("transform", "translate(" + (width - -40) + ",0)")
@@ -128,7 +122,7 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .data(dataset)
            .enter()
            .append("svg:line")
-           .attr("class","line")
+           .attr("class","ciline")
            .attr("x1",function(d){
            return xScale(d.lo);
            })
@@ -144,18 +138,18 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            // .style("opacity",0.11)
            // .style("stroke","lightslategrey")
            // .style("stroke-width","4px")
-           .on("mouseover",
-               function(){
-                   d3.select(this).style("opacity",.55);
-               }
-              )
-           .on("mouseout",
-               function(){
-                   d3.select(this).style("opacity",.11);
-               highLighted.style("opacity",0.00);
-               }
-              )
-           .on("mousemove",mymousemove); 
+           // .on("mouseover",
+           //     function(){
+           //         d3.select(this).style("opacity",.55);
+           //     }
+           //    )
+           // .on("mouseout",
+           //     function(){
+           //         d3.select(this).style("opacity",.11);
+           //     highLighted.style("opacity",0.00);
+           //     }
+           //    )
+            .on("mousemove",mymousemove); 
        
        function mymousemove() {
            y0 = yScale.invert(d3.mouse(this)[1]);
