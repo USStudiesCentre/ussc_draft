@@ -72,7 +72,7 @@ r2d3.onRender(function(root, svg, width, height, options, error){
        svg.selectAll("confidenceIntervals")
            .data(dataset)
            .enter()
-           .attr("class","ciline");
+           .attr("class","ciline")
            .attr("x1",function(d){
            return xScale(d.lo);
            })
