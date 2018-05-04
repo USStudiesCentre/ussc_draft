@@ -26,10 +26,10 @@
 
 .r2d3 .line line {
   fill: none;
-  opacity: 0.75;
+  opacity: 0.50;
   shape-rendering: auto;
   stroke-width: 4px;
-  stroke: #999999;
+  stroke: "#999";
 }
 
 .r2d3 .line path {
@@ -56,17 +56,18 @@
    /* font-weight: 400; */
    text-rendering: optimizeLegibility;
 }
+.r2d3 rect{
+
+  opacity:0.5;
+}
 
 .r2d3 .grid .tick {
     stroke: lightgrey;
 }
 .r2d3 .grid path {
-    stroke-width: 0;
-}
-
-.r2d3 .overlay {
-  fill: none;
-  pointer-events: all;
+    stroke: lightgrey;
+    stroke-width: 1px;
+    opacity: 0.15;
 }
 
 .r2d3 .d3-tip {

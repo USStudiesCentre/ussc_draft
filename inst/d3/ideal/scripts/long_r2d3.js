@@ -56,12 +56,12 @@ r2d3.onRender(function(root, svg, width, height, options, error){
        function make_x_grid(){
            return d3.svg.axis()
            .scale(xScale)
-           .orient("bottom")
+           .orient("top")
        }
 
        svg.append("g")         
                 .attr("class", "grid")
-                .style("opacity",0.15)
+//                .style("opacity",0.15)
                 .call(make_x_grid()
                  .tickSize(height, 0, 0)
                  .tickFormat("")
@@ -81,15 +81,14 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            })
                .attr("width",4)
            .attr("height",4)
-           .style("opacity",.50)
-               .style("fill",function(d) { 
+           .style("fill",function(d) { 
            return color(colorValue(d)); 
            });
 
        var horizontal = svg.append("g")
-            .append("svg:line")
-            .style("stroke-width", "1px")
-            .style("stroke","#999");
+            .append("svg:line");
+          // .style("stroke-width", "1px")
+          //  .style("stroke","#999");
 
        var highLighted = svg.append("g")
            .append("svg:rect")

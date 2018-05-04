@@ -21,7 +21,7 @@
 #' @author 
 #' Zoe Meers, Simon Jackman
 
-d3_rollcall_idealpoints <- function(data, width=NULL, height=NULL, annotate="#444"){
+d3_rollcall_idealpoints <- function(data, width=NULL, height=NULL){
     r2d3::r2d3(
         data=data,
         d3_version = "3", 
