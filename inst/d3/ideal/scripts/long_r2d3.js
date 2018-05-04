@@ -61,20 +61,18 @@ r2d3.onRender(function(root, svg, width, height, options, error){
 
        svg.append("g")         
                 .attr("class", "grid")
-//                .style("opacity",0.15)
+                .style("opacity",0.15)
                 .call(make_x_grid()
                  .tickSize(height, 0, 0)
                  .tickFormat("")
                  );
        
-       var confidenceInterval = svg.append("g")
+       var confidenceInterval = svg.append("line")
            .attr("class","ciline");
        // confidence intervals
        svg.selectAll("confidenceIntervals")
            .data(dataset)
            .enter()
-           .append("svg:line")
-           .attr("class","ciline")
            .attr("x1",function(d){
            return xScale(d.lo);
            })
@@ -87,21 +85,7 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .attr("y2",function(d){
            return yScale(d.indx);
            })
-           // .style("opacity",0.11)
-           // .style("stroke","lightslategrey")
-           // .style("stroke-width","4px")
-           // .on("mouseover",
-           //     function(){
-           //         d3.select(this).style("opacity",.55);
-           //     }
-           //    )
-           // .on("mouseout",
-           //     function(){
-           //         d3.select(this).style("opacity",.11);
-           //     highLighted.style("opacity",0.00);
-           //     }
-           //    )
-            .on("mousemove",mymousemove); 
+           .on("mousemove",mymousemove); 
 
        // plot data
        svg.selectAll("rect")
@@ -123,7 +107,8 @@ r2d3.onRender(function(root, svg, width, height, options, error){
 
            // draws line from CI to info
        var horizontal = svg.append("g")
-            .append("svg:line");
+            .append("svg:line")
+            .attr("class", "horizontal");
 
        var highLighted = svg.append("g")
            .append("svg:rect")

@@ -21,20 +21,28 @@
   display: none;
 }
 
-.r2d3 line {
+.r2d3 .ciline line {
   fill: none;
-  opacity: 0.20;
+  opacity: 0.10;
+  shape-rendering: auto;
+  stroke-width: 2px;
+  stroke: #999;
+}
+
+.r2d3 .ciline line:hover {
+  fill: none;
+  opacity: 0.60;
   shape-rendering: auto;
   stroke-width: 4px;
   stroke: #999;
 }
 
-.r2d3 line:hover {
+.r2d3 .horizonal line {
   fill: none;
-  opacity: 0.40;
+  opacity: 0.60;
   shape-rendering: auto;
-  stroke-width: 4px;
-  stroke: #999;
+  stroke-width: 1px;
+  stroke: slategray;
 }
 
 .r2d3 .line path {
@@ -62,7 +70,12 @@
 }
 .r2d3 rect{
   fill: black;
-  opacity:0.0;
+  opacity:0.40;
+}
+
+.r2d3 rect:hover{
+  fill: black;
+  opacity:0.80;
 }
 
 .r2d3 .grid .tick {
