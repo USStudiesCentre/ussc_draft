@@ -23,7 +23,15 @@
 
 .r2d3 line {
   fill: none;
-  opacity: 0.50;
+  opacity: 0.20;
+  shape-rendering: auto;
+  stroke-width: 4px;
+  stroke: #999;
+}
+
+.r2d3 line:hover {
+  fill: none;
+  opacity: 0.40;
   shape-rendering: auto;
   stroke-width: 4px;
   stroke: #999;
