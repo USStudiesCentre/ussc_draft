@@ -67,13 +67,13 @@
 }
 
 .r2d3 .ciline line {
-  opacity:0.00;
-  stroke:lightslategrey;
+  opacity:0.01;
+  stroke:lightgrey;
   stroke-width: 4px;
 }
 .r2d3 .ciline line:hover {
   opacity:0.55;
-  stroke:lightslategrey;
+  stroke:lightgrey;
   stroke-width: 4px;
 }
 
