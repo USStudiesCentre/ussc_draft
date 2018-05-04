@@ -121,8 +121,9 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            return color(colorValue(d)); 
            });
 
-       // var horizontal = svg.append("g")
-       //      .append("svg:line");
+           // draws line from CI to info
+       var horizontal = svg.append("g")
+            .append("svg:line");
 
        var highLighted = svg.append("g")
            .append("svg:rect")
@@ -232,6 +233,8 @@ r2d3.onRender(function(root, svg, width, height, options, error){
 
        svg.append("g")
            .append("svg:a")
+           .append("text")
+           .attr("class", "title")
            .attr({
            "xlink:href": "https://dx.doi.org/10.1017/S0003055404001194",
            "target": "_blank"})
