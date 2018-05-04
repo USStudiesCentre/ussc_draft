@@ -74,7 +74,7 @@
 }
 
 .r2d3 rect:hover{
-  fill: black;
+  /*fill: black;*/
   opacity:0.80;
 }
 
