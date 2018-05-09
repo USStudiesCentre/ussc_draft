@@ -182,7 +182,6 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            } else {
            yCoord2 = yCoord;
            }
-           if
 
 
            xCoord1 = xScale(d.up) + 6;
@@ -260,4 +259,9 @@ r2d3.onRender(function(root, svg, width, height, options, error){
            .text("Methodological details: Clinton, Jackman & Rivers, APSR 2004.");
     
        }
-      )
+       
+      );
+      r2d3.onResize(width, height){
+        force.force("center", d3.forceCenter(width / 2, height / 2))
+        .restart();
+}
